@@ -9,11 +9,6 @@ Generate the MatSim Dataset for material similarity: Random materials on random 
 ![](/Figure2.jpg)
 
 
-
-
-## How it works:
-The general work on the script is loading. Objects background and two materials. Assigning one material to the object and then gradually transitioning the object to the second material while generating images of the transition states. See (paper)[] for more details 
-
 # What you need
 ## Hardware + Software
 The script was run with Blender 3.1 with no add-ons, it can run with GPU or CPU but run much faster with a strong GPU.
