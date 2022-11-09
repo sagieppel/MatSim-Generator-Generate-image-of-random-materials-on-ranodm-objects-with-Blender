@@ -104,7 +104,8 @@ In the main.py to True, will cause Blender to exist every 10 sets. If this is ru
 1) Objects were taken from [Shapenet](https://shapenet.org/). Blender has some issue with reading the  shapenet ".obj" files directly, so it might be easier (but not essential) to convert to GTLF format using the AddionalScripts\ConvertShapeNet.py script supplied. See [https://github.com/CesiumGS/obj2gltf](https://github.com/CesiumGS/obj2gltf).
 
 3) HDRI backgrounds were downloaded from [PolyHaven](https://polyhaven.com/)
-4) PBR materials textures were downloaded from [AmbientCg](https://ambientcg.com/) and [FreePBR](https://freepbr.com/) and https://www.cgbookcase.com/.
+4) PBR materials textures were downloaded from [AmbientCg](https://ambientcg.com/) and [FreePBR](https://freepbr.com/) and [cgbookcases]https://www.cgbookcase.com/.
+ and [TextureBox](https://texturebox.com/category). 
 
 
 
