@@ -16,8 +16,11 @@ The script was run with Blender 3.1 with no add-ons, it can run with GPU or CPU 
 ## CGI Assets  
 Objects Folder, HDRI background folder, and a folder of PBR materials. Example folders are supplied as: “HDRI_BackGround”, “PBRMaterials”, and “Objects”. 
 The script should run as is with these folders.
+
 However, if you want to create truly diverse data, you need a large number of backgrounds, objects, and PBR materials. This can be downloaded for free at:
-[PolyHaven](https://polyhaven.com/), [AmbientCg](https://ambientcg.com/), [Shapenet](https://shapenet.org/). Note that the PBR folder should be in standard format for texture file names, for more details, see section ###PBR files format. 
+[PolyHaven](https://polyhaven.com/), [AmbientCg](https://ambientcg.com/), [Shapenet](https://shapenet.org/).
+
+Note that the PBR folder should be in standard format for texture file names, for more details, see sectionPBR files format. 
 
 # How to use.
 There are two ways to use this code one from within Blender and one from the command line.
