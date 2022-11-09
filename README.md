@@ -64,13 +64,16 @@ For other parameters, see the documentation within the code.
 See sample folders for example:
 
 ## Object Folder structure.
-The object folder should contain the object in .obj or .gtlf format in the main folder or subfolder  of the .Obj  just using the Shapenet dataset as is should work. There are, in some cases, advantages in first converting the object to GTLF  format since its blender have some issue with obj materials. But this is not essential.
+The object folder should contain the object in .obj or .gtlf format in the main folder or subfolder  of the .Obj  just using the Shapenet dataset as is should work. There are, in some cases, advantages in first converting the object to GTLF  format since its blender have some issue with obj materials.
+But this is not essential.
 
 ## HDRI folder
 This should just contain HDRI images for the background.
 
 ### PBR format
-The PBR folder should contain subfolders, each containing PBR texture maps. Blender read texture maps by their name. Therefore untypical map names will be ignored. The texture maps names should contains one of the following: "OriginColor.","Roughness.","Normal.","Height.","Metallic.","AmbientOcclusion"r,"Specular.","Reflection","Glosinees".
+The PBR folder should contain subfolders, each containing PBR texture maps. 
+Blender read texture maps by their name. Therefore untypical map names will be ignored. The texture maps names should contains one of the following: "OriginColor.","Roughness.","Normal.","Height.","Metallic.","AmbientOcclusion"r,"Specular.","Reflection","Glosinees".
+
 The script: PBR_handling\StandartizePBR.py will automatically convert a set of PBR folders to standard PBR folders (mainly rename texture maps files to standard names)
 
 # Combining existing PBR texture maps to generate new PBRS
