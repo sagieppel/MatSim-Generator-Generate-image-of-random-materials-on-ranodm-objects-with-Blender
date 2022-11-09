@@ -83,7 +83,7 @@ The script: PBR_Handling/CombinePBRMaterials.py. Take input pbr folders and mix 
 
 # Additional parameters 
 In the “Input parameters” of "Main" DatasetGeneration  script (last section of the script)
-"NumSimulationsToRun" determines how many different environments to render into images (How many different images will be created).
+"NumSimulationsToRun" determines how many different sets to render.
 
 
 
