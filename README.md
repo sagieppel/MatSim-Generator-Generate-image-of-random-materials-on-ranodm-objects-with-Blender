@@ -24,23 +24,42 @@ Note that the PBR folder should be in standard format for texture file names, fo
 
 # How to use.
 There are two ways to use this code one from within Blender and one from the command line.
+
 To run from the command line, use the line:
+
 blender DatasetGeneration.blend --background -noaudio -P  main.py
+
 Or sh Run.sh
-In this case, all the run parameters will be in main.py
-To run from within blender, open DatasetGeneration.blend and run from main.py from within blender. Note for Blender3  the main.py you run from within Blender is stored inside the .blend file and is different from the main.py file in the code folder if you change one, the other will not change. This can be very confusing. Blender python is very confusing in general.
+
+In this case, all the run parameters will be in main.py fiel.
+
+To run from within blender, open DatasetGeneration.blend and run from main.py from within blender. 
+
+Note for Blender3  the main.py you run from within Blender is stored inside the .blend file and is different from the main.py file in the code folder. 
+
+If you change one, the other will not change. 
+
+This can be very confusing. Blender python is very confusing in general.
 
 Note that while running, Blender will be paralyzed and will not respond.
-*** Note all paths are set to the example folder supplied, running Run.sh or the main.py from the blender file should allow the script to run out of the box
+
+*** Note all paths are set to the example folder supplied, running Run.sh or the main.py from the blender file should allow the script to run out of the box.
+
 ## Main run parameters 
+
 The main running parameters are in the main.py in the Input parameters section.
 This include:
+
 HDRI_BackGroundFolder = path to the HDRI background folder 
+
 ObjectFolder = Path to the folder containing the object files (for example, shape net folder) 
+
 OutFolder = path to output folder where generated dataset will be saved
+
 pbr_folders  = path to a folder containing the PBRs textures subfolders
 
 Sample folders to all of these assets folder are supplied with the code and could be used as reference. In general, the code should run as is from the command line and from within Blender GUI.
+
 For other parameters, see the documentation within the code.
 
  
