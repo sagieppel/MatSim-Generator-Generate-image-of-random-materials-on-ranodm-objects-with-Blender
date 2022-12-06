@@ -1,6 +1,6 @@
 # MatSim dataset generation script: Generate images of random material on random objects in random environments with a gradual transition between materials
-This script will procedurally generate images of random materials on random objects with a gradual transition between the materials for material similarity recognition dataset generation. See the paper (One-shot recognition of any material anywhere using contrastive learning with
-physics-based rendering)[] for more details. 
+This script will procedurally generate images of random materials on random objects with a gradual transition between the materials for material similarity recognition dataset generation. See the paper [One-shot recognition of any material anywhere using contrastive learning with
+physics-based rendering](https://arxiv.org/pdf/2212.00648.pdf) for more details. 
 
 ## What does this generate?
 
