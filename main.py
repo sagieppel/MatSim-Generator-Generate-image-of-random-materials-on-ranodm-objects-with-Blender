@@ -42,20 +42,20 @@ def ClearMaterials(KeepMaterials): # clean materials from scene
 # Example HDRI_BackGroundFolder and PBRMaterialsFolder  and ObjectsFolder folders should be in the same folder as the script. 
 # Background hdri folder
 HDRI_BackGroundFolder="HDRI_BackGround/"
-#r"/home/breakeroftime/Documents/Datasets/DataForVirtualDataSet/4k_HDRI/4k/" 
+#HDRI_BackGroundFolder=r"/home/breakeroftime/Documents/Datasets/DataForVirtualDataSet/4k_HDRI/4k/" 
 #ObjectFolder=r"/home/breakeroftime/Documents/Datasets/Shapenet/ShapeNetCoreV2/"
 #Folder of objects (like shapenet) 
 ObjectFolder=r"Objects/"
-#r"/home/breakeroftime/Documents/Datasets/Shapenet/ObjectGTLF_NEW/" 
+#ObjectFolder=r"/home/breakeroftime/Documents/Datasets/Shapenet/ObjectGTLF_NEW/" 
 # folder where out put will be save
 OutFolder="OutFolder/" # folder where out put will be save
 pbr_folders = ['PBRMaterials/'] # folders with PBR materiall each folder will be use with equal chance
-#r"/media/breakeroftime/9be0bc81-09a7-43be-856a-45a5ab241d90/NormalizedPBR/",
-#r'/media/breakeroftime/9be0bc81-09a7-43be-856a-45a5ab241d90/NormalizedPBR_MERGED/',
-#r'/media/breakeroftime/9be0bc81-09a7-43be-856a-45a5ab241d90/NormalizedPBR_MERGED/',
-#r'/media/breakeroftime/9be0bc81-09a7-43be-856a-45a5ab241d90/NormalizedPBR_MERGED/']
+#pbr_folders = [r"/mnt/306deddd-38b0-4adc-b1ea-dcd5efc989f3/Materials_Assets/NormalizedPBR/",
+#r'/mnt/306deddd-38b0-4adc-b1ea-dcd5efc989f3/Materials_Assets/NormalizedPBR_MERGED/',
+#r'/mnt/306deddd-38b0-4adc-b1ea-dcd5efc989f3/Materials_Assets/NormalizedPBR_MERGED/',
+#r'/mnt/306deddd-38b0-4adc-b1ea-dcd5efc989f3/Materials_Assets/NormalizedPBR_MERGED/']
 
-NumSetsToRender=10
+NumSetsToRender=10 
 use_priodical_exits = False # Exit blender once every few sets to avoid memory leaks, assuming that the script is run inside Run.sh loop that will imidiatly restart blender fresh
  
 
@@ -131,6 +131,7 @@ for cnt in range(NumSetsToRender):
 #---------------------------Pick materials-----------------------------------------   
     MainOutputFolder=OutFolder+"/"+str(cnt)
     if  os.path.exists(MainOutputFolder): continue # Dont over run existing folder continue from where you started
+    print("scounter",scounter)
     os.mkdir(MainOutputFolder)
     scounter+=1
 #==================select UV mapping mode of the material to the object==========================
@@ -211,7 +212,6 @@ for cnt in range(NumSetsToRender):
             bpy.context.object.modifiers["Subdivision"].render_levels = 2
 #*******************************************************************************************        
         Materials.ReplaceMaterial(MainObject,bpy.data.materials['TwoPhaseMaterial']) # replace material on object
-        
         MaxZ=MaxXY=20 # Size of object
        #-------------------------------------------Create ground plane and assign materials to it----------------------------------
         if np.random.rand()<0.25:
@@ -229,7 +229,7 @@ for cnt in range(NumSetsToRender):
         SetScene.AddBackground(hdr_list) # Add randonm Background hdri from hdri folder
 
     #..............................Create load  n objects into scene as background....................................................
-        if np.random.rand()<0.25:
+        if np.random.rand()<0.3:
                  Objects.LoadNObjectsToScene(ObjectList,AvoidPos=[0,0,0],AvoidRad=0,NumObjects=np.random.randint(8),MnPos=[-PlaneSx/2,-PlaneSy/2,-1],MxPos=[PlaneSx/2,PlaneSy/2,3],MnScale=(np.random.rand()*0.8+0.2)*MaxXY,MxScale=np.max([MaxXY,MaxZ])*(1+np.random.rand()*4))    
                 
       
@@ -246,7 +246,8 @@ for cnt in range(NumSetsToRender):
     #...........Set Scene and camera postion..........................................................
         SetScene.RandomlySetCameraPos(name="Camera",VesWidth = MaxXY,VesHeight = MaxZ)
         with open(OutputFolder+'/CameraParameters.json', 'w') as fp: json.dump( SetScene.CameraParamtersToDictionary(), fp)
-                
+        if np.random.rand()<0.1:
+            SetScene.add_random_point_light()
 ######################################################################################################################3
 
 # Generate images of same scene with different materials ratios on the same object and render
@@ -258,7 +259,9 @@ for cnt in range(NumSetsToRender):
                     SetScene.RandomRotateBackground() # randomly rotate background for each frame  for scenes above 1
                 if nscenes>3: 
                     SetScene.AddBackground(hdr_list) #   # randomly select background for each scene  for scenes above 1 
-                
+                    if np.random.rand()<0.15:
+                             SetScene.add_random_point_light()
+                           
                 #Randomize_RotateTranslate_TwoPBR_MaterialMapping(bpy.data.node_groups["Phase1"].nodes,bpy.data.node_groups["Phase2"].nodes,RotateMaterial)
                 Materials.Randomize_RotateTranslate_PBR_MaterialMapping(bpy.data.node_groups["Phase1"].nodes,RotateMaterial) # rotate translate material mapping to object    
                 Materials.Randomize_RotateTranslate_PBR_MaterialMapping(bpy.data.node_groups["Phase2"].nodes,RotateMaterial)# rotate translate material mapping to object
@@ -271,8 +274,9 @@ for cnt in range(NumSetsToRender):
                 bpy.context.scene.render.engine = 'CYCLES'
                 print("Saving Images")
                 print(OutputFolder)
-               # x=sfsfsfs
+           #     x=sfsfsfs
                 RenderSave.RenderImageAndSave(FileNamePrefix="RGB_"+str(matsRatio),OutputFolder=OutputFolder) # Render image and save
+                
 
                    
         #-------------------Save segmentation mask for center objet---------------------------------------------------------------------    
@@ -281,7 +285,7 @@ for cnt in range(NumSetsToRender):
         bpy.context.scene.render.image_settings.file_format = 'PNG'
         RenderSave.SaveObjectVisibleMask([MainObject.name],OutputFolder +"MaskOcluded") #mask of only visible region
         RenderSave.SaveObjectFullMask([MainObject.name],OutputFolder + "MaskFull") # all object even ocluded parts
-     
+       
         
         open(OutputFolder+"/Finished.txt","w").close()
         objs=[]
@@ -307,7 +311,7 @@ for cnt in range(NumSetsToRender):
     ClearMaterials(KeepMaterials=MaterialsList)
     print("========================Finished==================================")
     SetScene.CleanScene()  # Delete all objects in scence
-    if use_priodical_exits and scounter>=12: # Break program and exit blender, allow blender to remove junk
+    if use_priodical_exits and scounter>=20: # Break program and exit blender, allow blender to remove junk
         #  print("Resting for a minute")
         #  time.sleep(30)
           break
