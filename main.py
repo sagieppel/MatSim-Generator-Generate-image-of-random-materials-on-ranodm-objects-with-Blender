@@ -246,7 +246,7 @@ for cnt in range(NumSetsToRender):
     #...........Set Scene and camera postion..........................................................
         SetScene.RandomlySetCameraPos(name="Camera",VesWidth = MaxXY,VesHeight = MaxZ)
         with open(OutputFolder+'/CameraParameters.json', 'w') as fp: json.dump( SetScene.CameraParamtersToDictionary(), fp)
-        if np.random.rand()<0.1:
+        if np.random.rand()<0.05:
             SetScene.add_random_point_light()
 ######################################################################################################################3
 
@@ -259,7 +259,7 @@ for cnt in range(NumSetsToRender):
                     SetScene.RandomRotateBackground() # randomly rotate background for each frame  for scenes above 1
                 if nscenes>3: 
                     SetScene.AddBackground(hdr_list) #   # randomly select background for each scene  for scenes above 1 
-                    if np.random.rand()<0.15:
+                    if np.random.rand()<0.1:
                              SetScene.add_random_point_light()
                            
                 #Randomize_RotateTranslate_TwoPBR_MaterialMapping(bpy.data.node_groups["Phase1"].nodes,bpy.data.node_groups["Phase2"].nodes,RotateMaterial)
