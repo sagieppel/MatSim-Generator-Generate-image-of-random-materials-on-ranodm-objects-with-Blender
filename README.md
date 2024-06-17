@@ -2,6 +2,8 @@
 This script will procedurally generate images of random materials on random objects with a gradual transition between the materials for material similarity recognition dataset generation. See the paper [One-shot recognition of any material anywhere using contrastive learning with
 physics-based rendering](https://arxiv.org/pdf/2212.00648.pdf) for more details. 
 
+*code updated to run on blender 4.1
+
 ## What does this generate?
 
 Generate the MatSim Dataset for material similarity: Random materials on random objects in random environments with a gradual transition between materials 
@@ -11,7 +13,7 @@ Generate the MatSim Dataset for material similarity: Random materials on random 
 
 # What you need
 ## Hardware + Software
-The script was run with Blender 3.1 with no add-ons, it can run with GPU or CPU but run much faster with a strong GPU.
+The script was run with Blender 3.1 But is now updated to work with 4.1 (see previous commits for original version) code was run with no add-ons, it can run with GPU or CPU but run much faster with a strong GPU (cuda enabled).
 
 ## CGI Assets  
 Objects Folder, HDRI background folder, and a folder of PBR materials. Example folders are supplied as: “HDRI_BackGround”, “PBRMaterials”, and “Objects”. 
