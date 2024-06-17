@@ -216,12 +216,8 @@ for cnt in range(NumSetsToRender):
        #-------------------------------------------Create ground plane and assign materials to it----------------------------------
         if np.random.rand()<0.25:
             PlaneSx,PlaneSy= SetScene.AddGroundPlane("Ground",x0=0,y0=0,z0=0,sx=MaxXY,sy=MaxXY) # Add plane for ground
-            if np.random.rand()<0.9:+
-                   Materials.load_random_PBR_material(bpy.data.materials['GroundMaterial'].node_tree,materials_lst)
-                   Materials.ReplaceMaterial(bpy.data.objects["Ground"],bpy.data.materials['GroundMaterial']) # Assign PBR material to ground plane (Physics based material) from PBRMaterialsFolder
-            
-            else: 
-                Materials.AssignMaterialBSDFtoObject(ObjectName="Ground",MaterialName="BSDFMaterial") 
+            Materials.load_random_PBR_material(bpy.data.materials['GroundMaterial'].node_tree,materials_lst)
+            Materials.ReplaceMaterial(bpy.data.objects["Ground"],bpy.data.materials['GroundMaterial']) # Assign PBR material to ground plane (Physics based material) from PBRMaterialsFolder
         else: 
             with open(OutputFolder+'/NoGroundPlane.txt', 'w'): print("No Ground Plane")
         PlaneSx,PlaneSy=MaxXY*(np.random.rand()*4+2), MaxXY*(np.random.rand()*4+2)
