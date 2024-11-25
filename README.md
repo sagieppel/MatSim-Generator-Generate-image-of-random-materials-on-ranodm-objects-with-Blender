@@ -2,7 +2,7 @@
 This script will procedurally generate images of random materials on random objects with a gradual transition between the materials for material similarity recognition dataset generation. See the paper [One-shot recognition of any material anywhere using contrastive learning with
 physics-based rendering](https://arxiv.org/pdf/2212.00648.pdf) for more details. 
 
-*code updated to run on blender 4.1
+*code updated to run on blender 4.3
 
 ## What does this generate?
 
