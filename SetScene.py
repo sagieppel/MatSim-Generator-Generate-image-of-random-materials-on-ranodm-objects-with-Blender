@@ -153,7 +153,7 @@ def CleanScene():
        print(mes)
     for mes in allMeshes:
         bpy.data.meshes.remove(mes)
-    bpy.ops.outliner.orphans_purge(num_deleted=630, do_local_ids=True, do_linked_ids=True, do_recursive=True)
+    ####bpy.ops.outliner.orphans_purge(num_deleted=630, do_local_ids=True, do_linked_ids=True, do_recursive=True)
     print("Done cleaning")
 
 ################################################################################################################################3
